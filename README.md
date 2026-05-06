@@ -2,7 +2,7 @@
 
 > **Stop claiming. Start proving.**
 
-**iCommit** is an AI-powered Proof-of-Work ecosystem for **Sovereign Developers**. 
+**iCommit** is an AI-powered Proof-of-Work ecosystem for **Committed Developers**. 
 
 Transforming code contributions into a persistent professional presence and a high-fidelity record of engineering impact.
 
