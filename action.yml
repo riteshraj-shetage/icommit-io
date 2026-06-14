@@ -1,7 +1,7 @@
 # action.yml
-name: 'icommit'
+name: 'icommit-io'
 description: 'A native GitHub Action that synthesizes your raw Git activity into verified artifacts.'
-author: 'riteshraj'
+author: '@riteshraj-shetage'
 
 branding:
   icon: 'terminal' 

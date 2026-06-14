@@ -70,12 +70,12 @@ export default function App() {
 
         <div className="pt-4">
           <a 
-            href="https://github.com/riteshraj-shetage/icommit"
+            href="https://github.com/riteshraj-shetage/icommit-io"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block border border-emerald-900/60 bg-emerald-950/10 px-6 py-3 font-mono text-xs md:text-sm text-emerald-400 tracking-wider hover:bg-emerald-950/20 hover:border-emerald-500/40 transition-colors duration-200 rounded-none"
           >
-            @riteshraj-shetage/icommit
+            @riteshraj-shetage/icommit-io
           </a>
         </div>
 
