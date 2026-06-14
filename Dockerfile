@@ -1,11 +1,11 @@
-FROM python:3.12-slim
+FROM oven/bun:1.1-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY package.json bun.lock* ./
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN bun install --frozen-lockfile
 
 COPY . .
 
-ENTRYPOINT [ "python", "/app/core/engine.py" ]
+ENTRYPOINT [ "bun", "run", "/app/scripts/engine.ts" ]
