@@ -1,21 +1,21 @@
 name: Pipeline Integration Test
 
-on:
+on: 
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
-  run-pipeline:
+  test-engine:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Local Code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Execute Native Action Container
+      - name: Execute containerized test
         uses: ./
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Confirm JSON Data Structure
-        run: cat frontend/src/gh-data.json
+      - name: Verify data
+        run: cat frontend/public/gh-data.json
