@@ -1,0 +1,72 @@
+name: Deploy React Bun App to Global GitHub Pages Subfolder
+
+on:
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - "src/data/**" 
+  schedule:
+    - cron: '0 0 * * *' # Automatic daily deployment at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 1. Fetch GitHub data 
+      - name: Fetch GitHub Payload
+        uses: riteshraj-shetage/octofetch@v1.0.0
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          query_file: .github/autocrafts.query.graphql
+          variables: '{"owner": "${{ github.repository_owner }}"}'
+          output_file: src/data/sourced.json
+
+      # 2. Commit and Push payload back to this repository 
+      - name: Commit Payload back to Repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/sourced.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: automated payload sync [skip ci]"
+            git push origin main
+          else
+            echo "Payload hasn't changed. Skipping commit."
+          fi
+
+      # 3. Set up the Bun environment
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      # 4. Clean install UI dependencies 
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+        working-directory: .
+
+      # 5. Compile the React UI 
+      - name: Build Application
+        run: bun run build:gh
+        working-directory: .
+
+      # 6. Deploy to the external repository 
+      - name: Deploy to github.io repo subfolder
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.GH_PAT }}
+          publish_dir: ./dist
+          external_repository: ${{ github.repository_owner }}/${{ github.repository_owner }}.github.io
+          publish_branch: main
+          destination_dir: autocrafts
+          keep_files: true

@@ -1,0 +1,75 @@
+query GetDeveloperProfile($owner: String!) {
+  user(login: $owner) {
+    # 1. DeveloperProfile
+    login
+    name
+    avatarUrl
+    company
+    location
+    bio
+    createdAt
+    websiteUrl
+    followers {
+      totalCount
+    }
+    following {
+      totalCount
+    }
+
+    # 2. SocialLinks
+    socialAccounts(first: 10) {
+      nodes {
+        provider
+        url
+      }
+    }
+
+    # 3. Contributions
+    contributionsCollection {
+      contributionCalendar {
+        totalContributions
+        weeks {
+          contributionDays {
+            date
+            contributionCount
+            contributionLevel
+          }
+        }
+      }
+    }
+
+    # 4. Repositories
+    repositories(
+      first: 100
+      ownerAffiliations: OWNER
+      isFork: false
+      orderBy: { field: PUSHED_AT, direction: DESC }
+    ) {
+      totalCount
+      nodes {
+        id
+        name
+        description
+        url
+        homepageUrl
+        stargazerCount
+        forkCount
+        pushedAt
+        primaryLanguage {
+          name
+          color
+        }
+        # Languages
+        languages(first: 10, orderBy: { field: SIZE, direction: DESC }) {
+          edges {
+            size
+            node {
+              name
+              color
+            }
+          }
+        }
+      }
+    }
+  }
+}
