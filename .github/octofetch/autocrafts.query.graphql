@@ -42,6 +42,7 @@ query GetDeveloperProfile($owner: String!) {
     repositories(
       first: 100
       ownerAffiliations: OWNER
+      privacy: PUBLIC
       isFork: false
       orderBy: { field: PUSHED_AT, direction: DESC }
     ) {
