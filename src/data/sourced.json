@@ -4,7 +4,7 @@
     "name": "Riteshraj Shetage",
     "avatarUrl": "https://avatars.githubusercontent.com/u/144100040?u=24a37645b5063ad587ed2f76b338cb32c5eb05f6&v=4",
     "company": "OSS Developer",
-    "location": "IN",
+    "location": "Pune, IN",
     "bio": "Python | Linux | Automation",
     "createdAt": "2023-09-05T07:03:28Z",
     "websiteUrl": "riteshrajshetage.me",
@@ -19,16 +19,12 @@
         {
           "provider": "LINKEDIN",
           "url": "https://linkedin.com/in/riteshraj-shetage"
-        },
-        {
-          "provider": "GENERIC",
-          "url": "https://wakatime.com/@riteshraj"
         }
       ]
     },
     "contributionsCollection": {
       "contributionCalendar": {
-        "totalContributions": 1682,
+        "totalContributions": 1683,
         "weeks": [
           {
             "contributionDays": [
@@ -2067,8 +2063,13 @@
               },
               {
                 "date": "2026-06-29",
-                "contributionCount": 6,
+                "contributionCount": 7,
                 "contributionLevel": "FIRST_QUARTILE"
+              },
+              {
+                "date": "2026-06-30",
+                "contributionCount": 0,
+                "contributionLevel": "NONE"
               }
             ]
           }
@@ -2086,7 +2087,7 @@
           "homepageUrl": "",
           "stargazerCount": 0,
           "forkCount": 0,
-          "pushedAt": "2026-06-29T06:39:14Z",
+          "pushedAt": "2026-06-30T09:10:14Z",
           "primaryLanguage": {
             "name": "TypeScript",
             "color": "#3178c6"
@@ -2094,7 +2095,7 @@
           "languages": {
             "edges": [
               {
-                "size": 42395,
+                "size": 42353,
                 "node": {
                   "name": "TypeScript",
                   "color": "#3178c6"
@@ -2132,7 +2133,7 @@
           "homepageUrl": "https://riteshrajshetage.me",
           "stargazerCount": 0,
           "forkCount": 0,
-          "pushedAt": "2026-06-29T05:49:10Z",
+          "pushedAt": "2026-06-29T06:39:34Z",
           "primaryLanguage": {
             "name": "HTML",
             "color": "#e34c26"
